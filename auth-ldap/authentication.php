@@ -50,17 +50,17 @@ class LDAPAuthentication {
         // A general approach for RFC-2307
         '2307' => array(
             'user' => array(
-                'filter' => '(objectClass=inetOrgPerson)',
+                'filter' => '(objectClass=nsOrgPerson)',
                 'first' => 'gn',
                 'last' => 'sn',
                 'full' => array('displayName', 'gecos', 'cn'),
                 'email' => 'mail',
                 'phone' => 'telephoneNumber',
                 'mobile' => 'mobileTelephoneNumber',
-                'username' => 'uid',
-                'dn' => 'uid={username},{search_base}',
-                'search' => '(&(objectClass=inetOrgPerson)(|(uid={q}*)(displayName={q}*)(cn={q}*)))',
-                'lookup' => '(&(objectClass=inetOrgPerson)({attr}={q}))',
+                'username' => 'cn',
+                'dn' => 'cn={username},{search_base}',
+                'search' => '(&(objectClass=nsOrgPerson)(|(cn={q}*)(displayName={q}*)(cn={q}*)))',
+                'lookup' => '(&(objectClass=nsOrgPerson)({attr}={q}))',
             ),
         ),
     );
